@@ -1,0 +1,28 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "recipe manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "pg": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjb3/postgreSQL-recipeDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjb3/postgreSQL-recipeDB/issues"
+  },
+  "homepage": "https://github.com/sjb3/postgreSQL-recipeDB#readme"
+}
