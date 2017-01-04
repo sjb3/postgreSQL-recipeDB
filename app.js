@@ -1,13 +1,12 @@
 'use strict';
 
-import express from 'express';
-import path from 'path';
-import bodyParser from 'body-parser';
-import cons from 'consolidate';
-import dust from 'dustjs-helpers';
-import pg from 'pg';
-
-const app = express();
+var express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    cons = require('consolidate'),
+    dust = require('dustjs-helpers'),
+    pg = require('pg'),
+    app = express();
 
 //DB connection string
 //var conString = 'postgres://username:password@localhost/database';
@@ -25,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //Body Parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoder({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res){
   console.log('Do not panic, testing!');
@@ -33,5 +32,5 @@ app.get('/', function(req, res){
 
 //Server
 app.listen(3000, function(){
-  console.log('Server UP <8))><~ on: port', port);
+  console.log('Server UP <8))><~ on: port 3000');
 })
