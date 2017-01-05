@@ -42,19 +42,18 @@ app.get('/', (req, res) => {
   })
 });
 
-app.post('/add', function(req, res) {
+app.post('/add', (req, res) => {
   // PG connect
-  pg.connect(connect, function(err, client, done) {
-    if(err){
-      return console.error('error fetching client from pool', err)
-    }
+  pg.connect(connect, function(err, client, done){
+    if(err) return console.error('error fetching client from pool', err)
+
     //execute a query on our db
     client.query("INSERT INTO recipe(name, ingredients, directions) VALUES($1, $2, $3)",
       [req.body.name, req.body.ingredients, req.body.directions]);
 
       done();
       res.redirect('/');
-  }); 
+  });
 });
 
 //Server
