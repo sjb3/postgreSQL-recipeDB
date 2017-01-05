@@ -1,5 +1,7 @@
 {>"layout" /}
 
 {<body}
-THIS IS THE INDEX FILE!
+{#recipes}
+  {name}
+{/recipes}
 {/body}
