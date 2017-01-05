@@ -26,11 +26,37 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', function(req, res){
-  res.render('index');
+app.get('/', (req, res) => {
+  // PG connect
+  pg.connect(connect, (err, client, done) => {
+    if(err){
+      return console.error('error fetching client from pool', err)
+    }
+    //execute a query on our db
+    client.query('SELECT * FROM recipe', (err, result) => {
+      if(err) throw err;
+      //just print the result to the console
+      res.render('index', {recipes: result.rows});
+      done();
+    })
+  })
+});
+
+app.post('/add', (req, res) => {
+  // PG connect
+  pg.connect(connect, function(err, client, done){
+    if(err) return console.error('error fetching client from pool', err)
+
+    //execute a query on our db
+    client.query("INSERT INTO recipe(name, ingredients, directions) VALUES($1, $2, $3)",
+      [req.body.name, req.body.ingredients, req.body.directions]);
+
+      done();
+      res.redirect('/');
+  });
 });
 
 //Server
-app.listen(3000, function(){
+app.listen(3000, () => {
   console.log('Server UP <8))><~ on: port 3000');
-})
+});
