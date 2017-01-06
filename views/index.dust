@@ -46,24 +46,29 @@
             <h4 class="modal-title" id="myModalLabel">Add Recipe</h4>
           </div>
           <div class="modal-body">
+
             <div class="form-group">
               <lable>Recipe Name</lable>
               <input type="text" class="form-control" name="name" />
             </div>
+
             <div class="form-group">
               <lable>Ingredients</lable>
-              <input type="text" class="form-control" name="name" />
+              <textarea class="form-control" name="ingredients"></textarea>
             </div>
+
             <div class="form-group">
               <lable>Directions</lable>
-              <input type="text" class="form-control" name="name" />
+              <textarea class="form-control" name="directions"></textarea>
             </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <input type="submit" class="btn btn-primary" value="Save" />
           </div>
           </form>
+
       </div>
     </div>
   </div>
