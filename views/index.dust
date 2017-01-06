@@ -5,7 +5,7 @@
     Add recipe
   </button>
   <br />
-  <br />
+
 {#recipes}
   <div class='well'>
     <h4>{name}
