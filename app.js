@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.post('/add', (req, res) => {
   // PG connect
-  pg.connect(connect, function(err, client, done){
+  pg.connect(connect, (err, client, done) => {
     if(err) return console.error('error fetching client from pool', err)
 
     //execute a query on our db
@@ -53,6 +53,19 @@ app.post('/add', (req, res) => {
 
       done();
       res.redirect('/');
+  });
+});
+
+app.delete('/delete/:id', (req, res) => {
+  pg.connect(connect, (err, client, done) => {
+    if(err) return console.error('error fetching client from pool', err)
+
+    //execute a query on our db
+    client.query("DELETE FROM recipe WHERE id = $1", [req.params.id]);//get the id from URL
+
+      done();
+      res.sendStatus(200);
+
   });
 });
 
