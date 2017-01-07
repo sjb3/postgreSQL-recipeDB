@@ -65,7 +65,19 @@ app.delete('/delete/:id', (req, res) => {
 
       done();
       res.sendStatus(200);
+  });
+});
 
+app.post('/edit', (req, res) => {
+  pg.connect(connect, (err, client, done) => {
+    if(err) return console.error('error fetching client from pool', err)
+
+    //execute a query on our db
+    client.query("UPDATE recipe SET name=$1, ingredients=$2, directions=$3 WHERE id=$4",
+    [req.body.name, req.body.ingredients, req.body.directions, req.body.id]);//get the id from URL
+
+      done();
+      res.redirect('/');
   });
 });
 
